@@ -1,9 +1,16 @@
 # QRCode
 QR code decoder
 
-## QR Code Pre-Processing -- using OpenCV
+## QR Code Pre-Processing Part
+**QR Code Version 1 only**
 
-- **QR Code Version 1 only**
+### Basic facilities from OpenCV
+- cv::Mat
+- cv::imread
+- cv::imwrite
+- cv::resize
+
+### My implementations
 - rgb2gray
 - medfilter
 - im2bw
