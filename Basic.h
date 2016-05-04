@@ -4,6 +4,7 @@
 #include <opencv2/highgui/highgui.hpp> // imread
 #include <opencv2/imgproc/imgproc.hpp> //cvtColor
 #include <string>
+#include "old.h"
 
 
 namespace qr
@@ -17,7 +18,10 @@ public:
         raw_ = cv::imread(filename.c_str());
     }
     Image(cv::Mat& image) :raw_(image) {};
-
+    void reassign(Mat image)
+    {
+        image.copyTo(raw_);
+    }
     cv::Mat& mat()
     {
         return raw_;
@@ -53,13 +57,17 @@ public:
     }
     void filter()
     {
-        cv::medianBlur(img_.mat(), img_.mat(), 7);
+        img_.reassign(old_version::my_medfilter(img_.mat()));
+        imwrite("filtered.bmp", img_.mat());
+        //cv::medianBlur(img_.mat(), img_.mat(), 7);
     }
     void binaryzation()
     {
-        int blockSize = 35;
-        int C = 10;
-        cv::threshold(img_.mat(), img_.mat(), 127, 255, cv::THRESH_OTSU);
+        img_.reassign(old_version::my_im2bw(img_.mat()));
+        imwrite("binaryzation.bmp", img_.mat());
+        //int blockSize = 35;
+        //int C = 10;
+        //cv::threshold(img_.mat(), img_.mat(), 127, 255, cv::THRESH_OTSU);
         //cv::adaptiveThreshold(img.mat(), img.mat(), 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY_INV, blockSize, C);
     }
     void draw();

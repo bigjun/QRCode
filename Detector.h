@@ -23,9 +23,13 @@ public:
     void detect();
     //Mat rectified();
     void findPositionDetectionPattern();
-    Mat rectified();
+    void rectified();
     Mat cut();
-    int nominalX();
+    int calcSquareSize(qr::My_Point& p);
+    int calcSymbolSize();
+    Mat sampling();
+
+
 
 private:
     Image& img_;
@@ -36,6 +40,7 @@ private:
     My_Point A_; // left top
     My_Point B_; // right top
     My_Point C_; // left bottom
+    int symbolSize_;
 };
 
 }

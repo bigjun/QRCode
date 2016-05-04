@@ -23,6 +23,12 @@ vector<My_Point> my_make_point_unique(const vector<My_Point>& many)
         return many;
     }
 
+    //for (auto p : many)
+    //{
+    //    cout << "(" << p.first << ", " << p.second << ")" << endl;
+    //}
+
+
     // fix me
     //std::sort(many.begin(), many.end(), [](const My_Point& p1, const My_Point& p2) { return p1.first < p2.first; });
     //std::sort(many.begin(), many.end());
